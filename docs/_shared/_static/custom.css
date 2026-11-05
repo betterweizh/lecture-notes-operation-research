@@ -1,0 +1,178 @@
+/*
+ * House look of the book. Loaded after the theme's CSS by conf_common.py.
+ * Works with sphinx-book-theme (light and dark mode) and with the alabaster
+ * fallback used when the book theme is not installed.
+ */
+
+:root {
+  --ln-accent: #2a6db0;
+  --ln-accent-tint: rgba(42, 109, 176, 0.08);
+  --ln-solution: #2e8b57;
+  --ln-ink: #2b2b2b;
+  --ln-muted: #6b6b6b;
+}
+
+html[data-theme="dark"] {
+  --ln-accent: #79b0ef;
+  --ln-accent-tint: rgba(121, 176, 239, 0.12);
+  --ln-solution: #6fcf97;
+  --ln-ink: #e3e3e3;
+  --ln-muted: #a9a9a9;
+}
+
+/* ------------------------------------------------------------------ */
+/* Headings                                                            */
+/* ------------------------------------------------------------------ */
+
+.bd-article h1, div.body h1 { font-size: 2.2rem; }
+.bd-article h2, div.body h2 { font-size: 1.5rem; }
+.bd-article h3, div.body h3 { font-size: 1.3rem; }
+.bd-article h4, div.body h4 { font-size: 1.2rem; }
+.bd-article h5, div.body h5 { font-size: 1.1rem; }
+.bd-article h6, div.body h6 { font-size: 1rem; }
+
+/* ------------------------------------------------------------------ */
+/* sphinx-proof boxes and the learning-objectives admonition           */
+/* ------------------------------------------------------------------ */
+
+div.admonition.proof,
+div.admonition.objectives {
+  border-left: 0.25rem solid var(--ln-accent);
+}
+
+/* One look for every proof-style block: drop sphinx-proof's per-type
+   colours (pink examples, green lemmas, ...) in favour of the accent. */
+div.admonition.proof {
+  background-color: var(--pst-color-on-background, transparent);
+  border-color: var(--ln-accent);
+}
+
+div.admonition.proof > p.admonition-title,
+div.admonition.objectives > p.admonition-title {
+  background-color: var(--ln-accent-tint);
+}
+
+div.admonition.proof > p.admonition-title::after,
+div.admonition.objectives > p.admonition-title::after {
+  color: var(--ln-accent);
+}
+
+/* Proofs: dashed accent border (overrides sphinx-proof's div#proof). */
+div.admonition.proof#proof {
+  border-left-style: dashed;
+  border-left-color: var(--ln-accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Solutions: :::{dropdown} Solution with :class-container: solution   */
+/* ------------------------------------------------------------------ */
+
+details.sd-dropdown.solution {
+  border-left: 4px solid var(--ln-solution);
+}
+
+details.sd-dropdown.solution > summary {
+  font-weight: bold;
+}
+
+/* Proofs: :::{dropdown} Proof with :class-container: proof (folded) */
+details.sd-dropdown.proof {
+  border-left: 4px solid var(--ln-muted);
+}
+
+details.sd-dropdown.proof > summary {
+  font-style: italic;
+}
+
+details.sd-dropdown.proof > .sd-summary-content > :last-child::after {
+  content: " \220E";
+  float: right;
+}
+
+/* ------------------------------------------------------------------ */
+/* Math and tables scroll horizontally on narrow screens               */
+/* ------------------------------------------------------------------ */
+
+div.math,
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.pst-scrollable-table-container,
+div.body div.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+table.docutils,
+table.table {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fallback theme (alabaster) does not wrap tables in a scroll container:
+   let wide tables scroll on their own on narrow screens. */
+@media (max-width: 760px) {
+  div.body table.docutils {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Figures                                                             */
+/* ------------------------------------------------------------------ */
+
+figure,
+div.figure {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+figure img,
+div.figure img {
+  height: auto;
+  max-width: 100%;
+}
+
+figcaption,
+div.figure p.caption {
+  color: var(--ln-muted);
+}
+
+figcaption .caption-number,
+div.figure p.caption .caption-number {
+  color: var(--ln-ink);
+  font-weight: bold;
+}
+
+/* Line art and plots (class dark-light) are inverted in dark mode.
+   Photographs and screenshots get no class and are never inverted. */
+html[data-theme="dark"] img.dark-light {
+  filter: invert(0.88) hue-rotate(180deg);
+}
+
+/* ------------------------------------------------------------------ */
+/* Language switch                                                     */
+/* ------------------------------------------------------------------ */
+
+/* Book theme: switch and header buttons in one row. */
+.header-article-items__end,
+.header-article-items__end .header-article-item,
+.article-header-buttons {
+  align-items: center;
+  display: flex;
+}
+
+/* Alabaster fallback: the switch sits in the sidebar and shows its label. */
+.sphinxsidebar .lang-switch__link {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.sphinxsidebar .lang-switch__link::after {
+  content: attr(aria-label);
+}

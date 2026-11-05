@@ -1,0 +1,6 @@
+{%- if lang_switch_alternates %}{%- for alt in lang_switch_alternates %}
+<a class="btn btn-sm lang-switch__link" href="{{ alt.url }}" hreflang="{{ alt.code }}"
+   data-lang="{{ alt.code }}" title="{{ lang_switch_current_label }} → {{ alt.label }}"
+   aria-label="{{ alt.label }}" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="btn__icon-container"><i class="fa-solid fa-language fa-lg" aria-hidden="true"></i></span>
+</a>{%- endfor %}{%- endif %}

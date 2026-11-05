@@ -1,0 +1,55 @@
+# Chinese names of sphinx-proof blocks (compiled into proof.mo by
+# scripts/... see docs/_shared/_ext/proof_zh.py).
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Algorithm"
+msgstr "算法"
+
+msgid "Assumption"
+msgstr "假设"
+
+msgid "Axiom"
+msgstr "公理"
+
+msgid "Conjecture"
+msgstr "猜想"
+
+msgid "Corollary"
+msgstr "推论"
+
+msgid "Criterion"
+msgstr "准则"
+
+msgid "Definition"
+msgstr "定义"
+
+msgid "Example"
+msgstr "例"
+
+msgid "Lemma"
+msgstr "引理"
+
+msgid "Notation"
+msgstr "记号"
+
+msgid "Observation"
+msgstr "观察"
+
+msgid "Proof"
+msgstr "证明"
+
+msgid "Property"
+msgstr "性质"
+
+msgid "Proposition"
+msgstr "命题"
+
+msgid "Remark"
+msgstr "注"
+
+msgid "Theorem"
+msgstr "定理"
+
